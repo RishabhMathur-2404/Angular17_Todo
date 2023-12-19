@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+      <div class="col-12">
+          <textarea [(ngModel)]="taskObj.taskName" class="form-control" cols="3" placeholder="Add a New Task"></textarea>
+      </div>
+  </div>
+  <div class="tagarea">
+      <div class="col-3" >
+          <input type="date" [(ngModel)]="taskObj.dueDate" class="form-control1" id="" placeholder="Due Date">
+      <!-- </div>
+      <div > -->
+        <input type="text" [(ngModel)]="taskObj.tags" placeholder="Enter Comma Seperated tags" class="form-control1">
+      <!--</div>
+      <div class="col-3"> -->
+      </div>
+          <div class="d-grid">
+              <button class="btn1 btn-success btn-block" (click)="newTask()" >Add Task</button>
+          </div>
+      </div>
+
+  <div class=" btnss row pt-1">
+      <div class="col-12">
+        <button class="btn  btn-sm" [ngClass]="filterType == 'tags' ? 'btn-primary' : 'btn-secondary'" (click)="setFilter('tags')">Filter by Tags</button>
+          <button class="btn btn-sm" [ngClass]="filterType == 'showAll' ? 'btn-primary' : 'btn-secondary'" (click)="setFilter('showAll')">Show All</button>
+          <button class="btn btn-sm" [ngClass]="filterType == 'showCompleted' ? 'btn-primary' : 'btn-secondary'" (click)="setFilter('showCompleted')">Show Completed</button>
+      </div>
+  </div>
+
+  <div class="row pt-4" *ngIf="filterType == 'tags'">
+    <div class="col ">
+        <button class="btn btn-sm" [ngClass]="selectedTag == tag ? 'btn-success' : 'btn-secondary'" (click)="filterTag(tag)" *ngFor="let tag of tagsList">{{tag}}</button>
+
+    </div>
+</div>
+</div>
+<div class="">
+  <div class="col-12">
+      <table class="table table-bordered table-striped table-sm">
+          <thead>
+              <tr>
+                  <th><strong>Index</strong></th>
+                  <th><strong>Task Name</strong></th>
+                  <th><strong>Due Date</strong></th>
+                  <th class="text-center"><strong>Tags</strong></th>
+              </tr>
+          </thead>
+          <tbody class="table">
+              <tr *ngFor="let task of taskList;let sr=index">
+                  <td style="text-align: center;">{{sr+1}}</td>
+                  <td>
+                      <div class="row">
+                          <div class="col-1">
+                              <input (change)="onComplete()" [(ngModel)] = "task.isCompleted" type="checkbox">
+                          </div>
+                          <div class="col-6">
+                              {{task.taskName}}
+                          </div>
+
+
+                          <div class=" goo col-4 text-end ">
+                            <i (click)="onRemove(sr)" class="fa fa-times"></i>
+                          </div>
+                      </div>
+                  </td>
+                  <td>{{task.dueDate | date:'dd-MMM-yy'}}</td>
+                  <td class="text-center">
+                    {{task.tags}}
+                    <!-- <button class="btn btn-warning btn-sm rounded-btn"  *ngFor="let tag of getSepArr(task.tags)">{{tag}}</button> -->
+                </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+

@@ -1,0 +1,44 @@
+.form-control {
+  border: 1px solid black !important;
+}
+.btn1 {
+  border-radius: 5px;
+  margin-top: 15px;
+  color: black;
+  border: 2px solid blue;
+}
+.container{
+  display: flex;
+  margin: 0 5px;
+  gap: 10px;
+}
+.row{
+  display: flex;
+  width: 100%;
+}
+.form-control
+{
+  width: 600px;
+  height: 100px;
+  border-radius: 5px;
+}
+.table{
+  font-family: Arial, Helvetica, sans-serif;
+  width: 50%;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+  width: 100%;
+}
+.btn{
+  background-color: rgba(0, 0, 0, 0.59);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
